@@ -9,18 +9,17 @@ export class CommitEditor {
     this.fullPath = fullPath
   }
 
-  private runCommandRetain = async (command: string, yes?: boolean) => {
-    return await runCommand(`cd ${this.fullPath} && ${command}`)
+  private runCommandRetain = async (command: string) => {
+    return await runCommand(`${command}`, this.fullPath)
   }
 
   changeCommit = async (hash: string, newCommit: Commit) => {
     // todo
   }
 
-  async getCommit(hash: string) {
+  async getCommit(hash: string = "") {
     const { stdout, stderr } = await this.runCommandRetain(
       `git show --no-patch --no-notes ${hash}`,
-      true,
     )
 
     if (stderr) {
