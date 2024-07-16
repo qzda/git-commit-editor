@@ -3,8 +3,12 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun run  ./index.ts"
+    "dev": "cd playground; bun dev"
   },
+  "workspaces": [
+    "core",
+    "playground"
+  ],
   "devDependencies": {
     "@types/bun": "latest"
   },
